@@ -24,17 +24,10 @@ var confirmNumber;
 var confirmLowCase;
 var confirmUpCase;
 var criteria;
+var passChars = [];
+var pass;
 var generateBtn = document.querySelector("#generate");
 
-
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-}
 
 
 // Generate password
@@ -44,7 +37,7 @@ function generatePassword() {
   passLength = parseInt(prompt("How many characters would you like\
   your password to have? Please enter a value between 8 and 128."));
 
-  // if statement >>> password specification
+  // if statement >>> password length specification
   if (passLength == null) {
     alert("Please enter a value.");
   } else if (passLength < 8 || passLength > 128) {
@@ -57,7 +50,7 @@ function generatePassword() {
     confirmUpCase = confirm("Would you like to include upppercase characters?");
   }
 
-  // if statement >>> criteria specification
+  // if statement >>> password character criteria
   // if the user didn't choose any criteria, give an alert
   if (!confirmSpecial && !confirmNumber && !confirmLowCase && !confirmUpCase) {
     criteria = alert("Please choose at least 1 criteria.");
@@ -96,6 +89,24 @@ function generatePassword() {
   } else if (confirmUpCase) {
     criteria = UpCase;
   }
+
+  // loop for generating password characters
+  for (var i = 0; i < passLength; i++) {
+    var randomChar = criteria[Math.floor(math.random() * criteria.length)]
+    passChars.push(randomChar);
+  }
+
+  pass = passChars.join("");
+
+}
+
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
 }
 
 // Add event listener to generate button
