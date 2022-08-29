@@ -2,7 +2,7 @@
 Created by Caleb Lacson
 
 ## Description  
-This is a password generator that I created using fully custom JavaScript. 
+This is a password generator that I created using pre-written HTML and CSS, and almost entirely custom JavaScript. 
 
 The generator prompts the user to input the desired length of the passowrd. Then, the user is required to confirm various criteria 
 regarding different types of characters to be used in the password's generation (including special characters, numbers, lowercase
