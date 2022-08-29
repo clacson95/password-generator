@@ -13,7 +13,7 @@ const LowCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // UpperCase Alphabetical characters
-const UpCase = alphabet.map(function (letter) {
+const UpCase = LowCase.map(function (letter) {
   return letter.toUpperCase();
 });
 
@@ -25,30 +25,13 @@ var confirmLowCase;
 var confirmUpCase;
 var criteria;
 var passChars = [];
-var pass;
+var password;
 var generateBtn = document.querySelector("#generate");
 
 
 
 // Generate password
 function generatePassword() {
-
-  // Prompt user input
-  passLength = parseInt(prompt("How many characters would you like\
-  your password to have? Please enter a value between 8 and 128."));
-
-  // if statement >>> password length specification
-  if (passLength == null) {
-    alert("Please enter a value.");
-  } else if (passLength < 8 || passLength > 128) {
-    passLength = parseInt(prompt("You must enter a value between 8 and 128"));
-  } else {
-    
-    confirmSpecial = confirm("Would you like to include special characters?");
-    confirmNumber = confirm("Would you like to include numbers?");
-    confirmLowCase = confirm("Would you like to include lowercase characters?");
-    confirmUpCase = confirm("Would you like to include upppercase characters?");
-  }
 
   // if statement >>> password character criteria
   // if the user didn't choose any criteria, give an alert
@@ -90,23 +73,50 @@ function generatePassword() {
     criteria = UpCase;
   }
 
-  // loop for generating password characters
+  // loop to generate password characters and put them in an array
   for (var i = 0; i < passLength; i++) {
-    var randomChar = criteria[Math.floor(math.random() * criteria.length)]
+    var randomChar = criteria[Math.floor(Math.random() * criteria.length)]
     passChars.push(randomChar);
   }
 
-  pass = passChars.join("");
+  // takes the array items and combines them into a string without commmas
+  password = passChars.join("");
+  // return password;
 
+  // password = generatePassword();
+  
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
 }
 
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+    
+  // Prompt user input
+  passLength = parseInt(prompt("How many characters would you like\
+  your password to have? Please enter a value between 8 and 128."));
 
-  passwordText.value = password;
+  // if statement >>> password length specification
+  if (!passLength) {
+    alert("Please enter a value.");
+    return;
+  } else if (passLength < 8 || passLength > 128) {
+    alert("Please enter a value between 8 and 128.");
+    generatePassword();
+  } else if (passLength >= 8 || passLength <= 128) {
+    
+    confirmSpecial = confirm("Would you like to include special characters?");
+    confirmNumber = confirm("Would you like to include numbers?");
+    confirmLowCase = confirm("Would you like to include lowercase characters?");
+    confirmUpCase = confirm("Would you like to include upppercase characters?");
+  
+    generatePassword();
+
+  } else {
+    alert("Please try again.");
+  }
+    
 }
 
 // Add event listener to generate button
