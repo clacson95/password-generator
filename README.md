@@ -23,6 +23,6 @@ _The primary areas of code that were focused on in the creation of this project 
 ### Deployed Application
 https://clacson95.github.io/password-generator/
 
-### Sreenshots
+### Screenshots
 ![image](https://user-images.githubusercontent.com/108302822/187281684-16b487b4-4b64-4ee0-bcd2-4b8094b286d8.png)
 
